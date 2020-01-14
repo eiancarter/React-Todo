@@ -9,6 +9,7 @@ class TodoForm extends React.Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        // this.clearCompleted = this.clearCompleted.bind(this);
     }
 
     handleChange = e => {
@@ -20,6 +21,9 @@ class TodoForm extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         this.props.addTodo(this.state.taskText);
+    };
+    clearCompleted = e => {
+        this.props.clearCompleted(item);
     };
 
     render() {
@@ -38,7 +42,7 @@ class TodoForm extends React.Component {
             </form>
             <button
                 className='clear-btn'
-                onChange={this.handleSubmit}>Completed
+                onChange={this.clearCompleted}> Clear Completed
             </button>
             </>
         );

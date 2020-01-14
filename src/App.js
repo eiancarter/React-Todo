@@ -51,24 +51,19 @@ class App extends Component {
       toDo: [...this.state.toDo, newTodo]
     });
   };
-  // clearCompleted = itemName => {
-  //   const newComplete = {
-  //     task: itemName,
-  //     id: Date.now(),
-  //     completed: true
-  //   };
-  //   this.setState({
-  //     toDo: [...this.setState.toDo, newComplete]
-  //   });
-  // };
+  clearCompleted = itemName => {
+    this.setState({
+      item: this.state.todo.filter(el => el !== itemName)
+    })
+  };
 
   render() {
     console.log('generating todo list...');
     return (
-      <div>
+      <div class='container'>
         <h1>Todo List</h1>
-        <TodoForm addTodo={this.addTodo}/>
-        <TodoList todos={this.state.toDo} toggleItem={this.toggleItem} />
+        <TodoForm addTodo={this.addTodo} />
+        <TodoList todos={this.state.toDo} toggleItem={this.toggleItem} clearCompleted={this.clearCompleted} />
       </div>
     );
   }
